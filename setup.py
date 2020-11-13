@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 requirements = []
 extra_requirements = {
@@ -16,9 +16,10 @@ setup(
     author="Robert Cohn",
     author_email="rscohn2@gmail.com",
     license="MIT",
-    packages=["devcloud"],
+    packages=find_packages(),
+    package_data={'devcloud': ['data/*']},
     entry_points={
-        "console_scripts": ["devcloud=devcloud.cli:main"],
+        "console_scripts": ["dc=devcloud.cli:main"],
     },
     install_requires=requirements,
     extras_require=extra_requirements,
