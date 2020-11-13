@@ -13,12 +13,11 @@ def get_args():
 
 def queue_cmd(args):
     outfile = "%s.txt" % args.node
-    cmd = "rm %s"
+    cmd = "rm -f %s" % outfile
     cmd += (
-        "|| qsub -q batch@v-qsvr-nda -j oe -o %s"
+        " && qsub -q batch@v-qsvr-nda -j oe -o %s"
         " -l nodes=%s:ppn=2 -d . %s"
         % (
-            outfile,
             outfile,
             args.node,
             args.script,
